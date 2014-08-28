@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Kata
 {
-    public class Thing
+    public class Thing 
     {
         public int Id { get; set; }
         public string Name { get; set; }
@@ -15,7 +15,7 @@ namespace Kata
         public DateTime? EndDate { get; set; }
     }
 
-    public class AnotherThing
+    public class AnotherThing : Object
     {
         public int Id { get; set; }
         public int Status { get; set; }

@@ -6,15 +6,18 @@ using System.Threading;
 
 namespace Kata
 {
-    public class ThingProvider
+    public class ThingProvider : IProvider
     {
-        public static IList<Thing> GetAllThings()
+
+        public static List<Thing> ListOfInsertedThing = new List<Thing>();
+        
+        public IList<object> GetAll()
         {
             Thread.Sleep(3000);
             Random random = new Random();
-            return Enumerable.Range(1, 20000)
+            return (IList<object>)Enumerable.Range(1, 20000)
                 .ToList()
-                .Select(x => new Thing
+                .Select(x => new
                 {
                     Id = x,
                     EndDate = random.Next(0, 2) == 1 ? null : (DateTime?)DateTime.Now,
@@ -26,7 +29,7 @@ namespace Kata
                 .ToList();
         }
 
-        public static Thing GetThingById(int id)
+        public object GetById(int id)
         {
             Random random = new Random();
             return random.Next(0, 2) == 1 ?
@@ -42,7 +45,7 @@ namespace Kata
                 : null;
         }
 
-        public static Thing GetThingByName(string name)
+        public object GetByName(string name)
         {
             Thread.Sleep(100);
             Random random = new Random();
@@ -59,14 +62,41 @@ namespace Kata
             : null;
         }
 
-        public static void Update(Thing thing)
+        public void Update(object thing)
         {
             //Persists
         }
 
-        public static void Insert(Thing thing)
+        public void Insert(object thing)
         {
             //Persists
+        }
+
+        public object CreateObject(string line)
+        {
+            string[] values = line.Split(';');
+            Thing thing = new Thing();
+            thing.Name = values[0];
+            thing.StartDate = DateTime.Parse(values[1]);
+            thing.EndDate = DateTime.Parse(values[2]);
+            thing.Owner = values[3];
+            if (string.IsNullOrEmpty(thing.Name)) 
+            {
+                throw new Exception("Name is mandatory");
+            }
+            return thing;
+        }
+
+
+        public bool AlReadyImported(object objectToImport)
+        {
+            Thing thing = (Thing)objectToImport;
+            return ListOfInsertedThing.Contains(thing);
+        }
+
+        public bool Exist(object objectToImport)
+        {
+            throw new NotImplementedException();
         }
     }
 }

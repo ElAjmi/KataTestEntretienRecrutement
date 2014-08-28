@@ -6,13 +6,15 @@ using System.Threading;
 
 namespace Kata
 {
-    class AnotherThingProvider
+    class AnotherThingProvider : IProvider
     {
-        public static IList<AnotherThing> GetAllAnotherThings()
+        public static List<AnotherThing> ListOfInsertedAnotherThing = new List<AnotherThing>();
+
+        public  IList<object> GetAll()
         {
             Thread.Sleep(3000);
             Random random = new Random();
-            return Enumerable.Range(1, 20000)
+            return (IList<object>)Enumerable.Range(1, 20000)
                 .ToList()
                 .Select(x => new AnotherThing
                 {
@@ -25,7 +27,7 @@ namespace Kata
                 .ToList();
         }
 
-        public static AnotherThing GetAnotherThingById(int id)
+        public  object GetById(int id)
         {
             Random random = new Random();
             return random.Next(0, 2) == 1 ?
@@ -40,7 +42,7 @@ namespace Kata
                 : null;
         }
 
-        public static AnotherThing GetAnotherThingByName(string name)
+        public  object GetByName(string name)
         {
             Thread.Sleep(100);
             Random random = new Random();
@@ -56,14 +58,38 @@ namespace Kata
             : null;
         }
 
-        public static void Update(Thing thing)
+        public  void Update(object thing)
         {
             //Persists
         }
 
-        public static void Insert(Thing thing)
+        public  void Insert(object thing)
         {
             //Persists
+        }
+
+        public object CreateObject(string line)
+        {
+            throw new NotImplementedException();
+        }
+
+
+
+
+        public void TraitLine(string line)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public bool AlReadyImported(object objectToImport)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Exist(object objectToImport)
+        {
+            throw new NotImplementedException();
         }
     }
 }
