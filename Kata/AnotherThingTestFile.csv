@@ -1,3 +1,4 @@
+Name;StartDate;EndDate;ValueDate;Comment
 test1;2014-01-01;2014-02-01;;FEATURE
 test2;2014-01-02;2014-02-02;;FEATURE
 test3;2014-01-03;2014-02-03;;FEATURE

@@ -1,0 +1,21 @@
+﻿<?xml version="1.0"?>
+<Mappage>
+  <Thing>
+    <Id fileName =""/>
+    <Name fileName ="Name"/>
+    <Status fileName =""/>
+    <Owner fileName ="Owner"/>
+    <StartDate fileName ="StartDate"/>
+    <EndDate fileName ="EndDate"/>
+  </Thing>
+  <AnotherThing>
+    <Id fileName =""/>
+    <Status fileName =""/>
+    <StartDate fileName ="StartDate"/>
+    <EndDate fileName ="EndDate"/>
+    <ValueDate fileName ="ValueDate"/>
+    <Comment fileName ="Comment"/>
+    <Price fileName =""/>
+    <Name fileName ="Name"/>
+  </AnotherThing>
+</Mappage>

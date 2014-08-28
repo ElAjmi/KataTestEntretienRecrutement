@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AnotherThingProvider.cs" />
+    <Compile Include="Enumeration.cs" />
     <Compile Include="IProvider.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -53,9 +54,16 @@
     <Compile Include="TraitmentService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="AnotherThingTestFile.csv" />
+    <None Include="AnotherThingTestFile.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="app.config" />
     <None Include="ThingTestFile.csv" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Mappage.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
